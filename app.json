@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Tattoo Studio Agenda",
+    "slug": "tattoo-studio-agenda",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tattoostudio.agenda"
+    },
+    "android": {
+      "package": "com.tattoostudio.agenda",
+      "adaptiveIcon": {
+        "backgroundColor": "#050505"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
