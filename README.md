@@ -4,9 +4,9 @@ Agenda móvil para un estudio de tatuajes creada con **Expo + React Native + Typ
 
 ## Qué incluye la app
 
-- Pantalla principal con estética negra y dorada inspirada en el diseño de referencia y logo personalizado de Gambo Tattoo.
+- Pantalla principal con estética negra y dorada inspirada en el diseño de referencia.
 - Accesos rápidos a **Consentimiento**, **Calendario** y **Facturas**.
-- Formulario de consentimiento informado con datos del cliente, fecha de nacimiento, alergias, texto legal previo y firma escrita.
+- Formulario de consentimiento informado con datos del cliente, alergias y firma escrita.
 - Agenda de citas con cliente, fecha, hora, diseño, precio y cambio rápido entre pendiente/confirmada.
 - Facturas simples con estado pendiente/pagada.
 - Datos de ejemplo en memoria para empezar a probar la interfaz sin backend.
