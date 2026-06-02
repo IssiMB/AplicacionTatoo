@@ -160,9 +160,6 @@ export default function App() {
     client: '',
     dni: '',
     birthDate: '',
-  const [consentForm, setConsentForm] = useState({
-    client: '',
-    dni: '',
     phone: '',
     allergies: '',
     signature: ''
@@ -224,7 +221,7 @@ export default function App() {
     }
 
     Alert.alert('Consentimiento guardado', `Documento registrado para ${consentForm.client}.`);
-    setConsentForm({ client: '', dni: '', phone: '', allergies: '', signature: '' });
+    setConsentForm({ client: '', dni: '', birthDate: '', phone: '', allergies: '', signature: '' });
   };
 
   return (
@@ -330,10 +327,13 @@ function HomeScreen({
 function Logo() {
   return (
     <View style={styles.logoWrapper}>
-      <View style={styles.logoCircle}>
-        <Text style={styles.machineIcon}>⚙︎</Text>
-        <Text style={styles.logoTattoo}>TATTOO</Text>
-        <Text style={styles.logoStudio}>— STUDIO —</Text>
+      <View style={styles.logoImageFrame}>
+        <Image
+          accessibilityLabel="Logo Gambo Tattoo"
+          resizeMode="contain"
+          source={{ uri: gamboTattooLogoDataUri }}
+          style={styles.logoImage}
+        />
       </View>
     </View>
   );
@@ -362,6 +362,8 @@ function ConsentScreen({
   setForm,
   onSave
 }: {
+  form: ConsentForm;
+  setForm: (form: ConsentForm) => void;
   form: { client: string; dni: string; phone: string; allergies: string; signature: string };
   setForm: (form: { client: string; dni: string; phone: string; allergies: string; signature: string }) => void;
   onSave: () => void;
@@ -371,6 +373,11 @@ function ConsentScreen({
       <SectionTitle title="Consentimiento informado" subtitle="Registra los datos legales antes de comenzar la sesión." />
       <TextField label="Cliente" value={form.client} onChangeText={(client) => setForm({ ...form, client })} />
       <TextField label="DNI / Pasaporte" value={form.dni} onChangeText={(dni) => setForm({ ...form, dni })} />
+      <TextField
+        label="Fecha de nacimiento"
+        value={form.birthDate}
+        onChangeText={(birthDate) => setForm({ ...form, birthDate })}
+      />
       <TextField label="Teléfono" value={form.phone} onChangeText={(phone) => setForm({ ...form, phone })} keyboardType="phone-pad" />
       <TextField
         label="Alergias, medicación o notas médicas"
@@ -619,37 +626,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 430
   },
-  logoCircle: {
+  logoImageFrame: {
     alignItems: 'center',
+    backgroundColor: '#ffffff',
     borderColor: gold,
-    borderRadius: 190,
+    borderRadius: 28,
     borderWidth: 2,
-    height: 330,
+    height: 360,
     justifyContent: 'center',
+    overflow: 'hidden',
+    padding: 10,
     shadowColor: gold,
     shadowOpacity: 0.35,
     shadowRadius: 18,
     width: 330
   },
-  machineIcon: {
-    color: gold,
-    fontSize: 92,
-    textShadowColor: darkGold,
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4
-  },
-  logoTattoo: {
-    color: gold,
-    fontSize: 54,
-    fontWeight: '900',
-    letterSpacing: 4
-  },
-  logoStudio: {
-    color: gold,
-    fontSize: 25,
-    fontWeight: '700',
-    letterSpacing: 5,
-    marginTop: 8
+  logoImage: {
+    height: '100%',
+    width: '100%'
   },
   statsRow: {
     flexDirection: 'row',
