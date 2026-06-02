@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
+import { gamboTattooLogoDataUri } from './logoData';
 import {
   Alert,
+  Image,
   Modal,
   Platform,
   Pressable,
@@ -364,8 +366,6 @@ function ConsentScreen({
 }: {
   form: ConsentForm;
   setForm: (form: ConsentForm) => void;
-  form: { client: string; dni: string; phone: string; allergies: string; signature: string };
-  setForm: (form: { client: string; dni: string; phone: string; allergies: string; signature: string }) => void;
   onSave: () => void;
 }) {
   return (
@@ -386,10 +386,7 @@ function ConsentScreen({
         multiline
       />
       <View style={styles.legalBox}>
-        <Text style={styles.legalText}>
-          Declaro que he informado correctamente sobre mi estado de salud, autorizo la realización del tatuaje y acepto las
-          recomendaciones de cuidado posterior del estudio.
-        </Text>
+        <Text style={styles.legalText}>{informedConsentText}</Text>
       </View>
       <TextField label="Firma escrita" value={form.signature} onChangeText={(signature) => setForm({ ...form, signature })} />
       <GoldButton label="Guardar consentimiento" onPress={onSave} />

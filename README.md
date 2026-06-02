@@ -32,6 +32,34 @@ npm run android
 
 Para iOS desde Windows puedes probar en un iPhone físico con Expo Go. Para compilar una app final de iOS necesitarás EAS Build o un Mac para el firmado/publicación.
 
+
+## Solución de error `Missing semicolon` en `App.tsx`
+
+Si Expo muestra un error parecido a:
+
+```text
+/App.tsx: Missing semicolon. (1:5)
+> 1 | mport { useMemo, useState } from 'react';
+```
+
+significa que a la primera línea de `App.tsx` le falta la letra inicial `i`. Comprueba que el archivo empiece exactamente así:
+
+```ts
+import { useMemo, useState } from 'react';
+```
+
+Después puedes comprobar automáticamente que el archivo está bien con:
+
+```bash
+npm run check:app-import
+```
+
+Si la comprobación pasa, guarda el archivo y reinicia Expo limpiando caché:
+
+```bash
+npx expo start -c
+```
+
 ## Scripts disponibles
 
 - `npm start`: inicia el servidor de desarrollo de Expo.
@@ -39,14 +67,17 @@ Para iOS desde Windows puedes probar en un iPhone físico con Expo Go. Para comp
 - `npm run ios`: abre la app en iOS cuando el entorno lo permite.
 - `npm run web`: abre una vista web de desarrollo.
 - `npm run typecheck`: valida TypeScript sin generar archivos.
+- `npm run check:app-import`: comprueba que `App.tsx` empieza con `import` y no con `mport`.
 
 ## Estructura principal
 
 ```text
 App.tsx          # Interfaz completa de la agenda
+logoData.ts      # Logo incrustado en texto para evitar archivos binarios
 app.json         # Configuración Expo para Android/iOS
 package.json     # Dependencias y scripts
 README.md        # Guía de uso en Windows + VS Code
+scripts/         # Comprobaciones auxiliares del proyecto
 ```
 
 ## Siguientes mejoras recomendadas

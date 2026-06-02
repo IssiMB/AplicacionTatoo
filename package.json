@@ -8,7 +8,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:app-import": "node scripts/verify-app-import.mjs"
   },
   "dependencies": {
     "expo": "~56.0.0",
