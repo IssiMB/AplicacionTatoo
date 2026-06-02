@@ -4,9 +4,9 @@ Agenda móvil para un estudio de tatuajes creada con **Expo + React Native + Typ
 
 ## Qué incluye la app
 
-- Pantalla principal con estética negra y dorada inspirada en el diseño de referencia y logo personalizado de Gambo Tattoo.
+- Pantalla principal con estética negra y dorada inspirada en el diseño de referencia.
 - Accesos rápidos a **Consentimiento**, **Calendario** y **Facturas**.
-- Formulario de consentimiento informado con datos del cliente, fecha de nacimiento, alergias, texto legal previo y firma escrita.
+- Formulario de consentimiento informado con datos del cliente, alergias y firma escrita.
 - Agenda de citas con cliente, fecha, hora, diseño, precio y cambio rápido entre pendiente/confirmada.
 - Facturas simples con estado pendiente/pagada.
 - Datos de ejemplo en memoria para empezar a probar la interfaz sin backend.
@@ -32,28 +32,6 @@ npm run android
 
 Para iOS desde Windows puedes probar en un iPhone físico con Expo Go. Para compilar una app final de iOS necesitarás EAS Build o un Mac para el firmado/publicación.
 
-
-## Solución de error `Missing semicolon` en `App.tsx`
-
-Si Expo muestra un error parecido a:
-
-```text
-/App.tsx: Missing semicolon. (1:5)
-> 1 | mport { useMemo, useState } from 'react';
-```
-
-significa que a la primera línea de `App.tsx` le falta la letra inicial `i`. Comprueba que el archivo empiece exactamente así:
-
-```ts
-import { useMemo, useState } from 'react';
-```
-
-Después guarda el archivo y reinicia Expo limpiando caché:
-
-```bash
-npx expo start -c
-```
-
 ## Scripts disponibles
 
 - `npm start`: inicia el servidor de desarrollo de Expo.
@@ -66,7 +44,6 @@ npx expo start -c
 
 ```text
 App.tsx          # Interfaz completa de la agenda
-logoData.ts      # Logo incrustado en texto para evitar archivos binarios
 app.json         # Configuración Expo para Android/iOS
 package.json     # Dependencias y scripts
 README.md        # Guía de uso en Windows + VS Code
