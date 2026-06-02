@@ -33,9 +33,79 @@ type Invoice = {
   paid: boolean;
 };
 
+type ConsentForm = {
+  client: string;
+  dni: string;
+  birthDate: string;
+  phone: string;
+  allergies: string;
+  signature: string;
+};
+
 const gold = '#d4a84f';
 const darkGold = '#9c7330';
 const background = '#050505';
+
+const informedConsentText = `CLIENTE
+- Empleo de material de un solo uso o estéril.
+- Desprecintado de todo el material en presencia del cliente.
+- Limpieza y desinfección del área de trabajo y la zona anatómica sobre la que se va a actuar.
+- Desechado del material sobrante en presencia del cliente.
+- Uso de guantes de un solo uso.
+- Uso de bata, mascarilla u otras medidas de protección específicos y limpios.
+
+G) MEDIDAS A SEGUIR EN LOS DÍAS PREVIOS A LA INTERVENCIÓN:
+- No se deben tomar fármacos antiagregantes, como la aspirina.
+- No se deben tomar fármacos anticoagulantes ni vasodilatadores.
+- No ingerir alcohol.
+- No exponer al sol ni rayos UVA la zona de aplicación.
+
+H) MEDIDAS A SEGUIR EN LA ZONA TRAS LA APLICACIÓN:
+Hacer la higiene diaria con suero fisiológico aplicado con una gasa estéril.
+- Aplicarle frío seco los dos primeros días, máximo unos 5 minutos.
+- Mantenerla seca.
+- No agredirla, no rascarla, ni frotarla ni realizar tratamientos faciales.
+- Evitar cosméticos no específicos: cremas, maquillajes, leches limpiadoras, vaselinas, etc.
+- Evitar el sol y los rayos UVA.
+- Evitar ir a las saunas, piscinas y playas.
+- Antes de la exposición al sol es preciso utilizar protectores solares de pantalla total.
+- Si en los días posteriores a la aplicación apareciese cualquier reacción o alteración hay que consultar al médico.
+
+I) POSIBLES RIESGOS Y COMPLICACIONES
+En las técnicas de arte corporal en las que se perfora la epidermis existe el riesgo de transmisión de determinadas enfermedades que se propagan por vía sanguínea: Hepatitis B o C, VIH.
+Cicatrización queloide, posible sensibilización a los productos utilizados, fotosensibilización, rechazos.
+Para evitar ese riesgo en este establecimiento aplicamos todas las técnicas que han demostrado ser eficaces y se le han señalado en apartados anteriores.
+
+J) CONTRAINDICACIONES:
+Situaciones ante las cuales no es recomendable la aplicación de técnicas de arte corporal de manera temporal:
+- Déficit inmunológico, mientras dure el mismo.
+- Intervenciones quirúrgicas.
+- Quimioterapia o radioterapia.
+- Infección local o general por bacterias, hongos o virus.
+- Cicatrices no estabilizadas.
+- Quemaduras recientes.
+- Úlceras.
+- Hematomas.
+
+Situaciones ante las cuales no es recomendable la aplicación de técnicas de arte corporal si no es bajo supervisión médica:
+- Diabetes.
+- Hemofilia.
+- Cardiopatías.
+- Portadores de VIH.
+- Portadores de hepatitis B y C.
+- Inmunodeprimidos.
+- Prótesis valvulares, ortopédicas u otras.
+
+Situaciones ante las cuales no es recomendable la aplicación de técnicas de arte corporal bajo ninguna circunstancia:
+- Reacciones alérgicas a los productos utilizados.
+- Padecimientos de la piel en la zona de aplicación: pecas y lunares, queloides, angiomas engrosados, verrugas, melanomas, impétigo, psoriasis, dermatitis, acné, alergias de contacto, urticaria, cloasma, cáncer de piel, ombligos protruyentes, enfermedades infecciosas o infección.
+
+K) PRESUPUESTO PREVIO Y COSTE DEL SERVICIO
+
+L) REVOCAR ESTE CONSENTIMIENTO INFORMADO
+Se me ha informado que tengo derecho a revocar el presente documento en cualquier momento, sin necesidad de expresar motivación alguna.
+
+El cliente admite haber sido informado por escrito y oralmente, sobre todos los apartados establecidos en el presente documento y hace manifestación expresa de su conformidad para que sea aplicada la técnica de arte corporal que se reseña en el mismo. Y como prueba del mismo firma el presente documento en presencia del aplicador.`;
 
 const initialAppointments: Appointment[] = [
   {
@@ -86,6 +156,10 @@ export default function App() {
     price: ''
   });
   const [invoiceForm, setInvoiceForm] = useState({ client: '', concept: '', total: '' });
+  const [consentForm, setConsentForm] = useState<ConsentForm>({
+    client: '',
+    dni: '',
+    birthDate: '',
   const [consentForm, setConsentForm] = useState({
     client: '',
     dni: '',
